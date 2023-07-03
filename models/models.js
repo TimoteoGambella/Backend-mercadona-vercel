@@ -16,4 +16,5 @@ const Usuarios=mongoose.model("users",{
     cart:Array
 })
 
-module.exports=Productos,Usuarios
+module.exports=Productos
+module.exports=Usuarios
