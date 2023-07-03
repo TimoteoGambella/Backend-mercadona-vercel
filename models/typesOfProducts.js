@@ -1,0 +1,39 @@
+const typesOfProducts=[
+    {
+        id:1,
+        name:"Alimentación",
+        img:"https://firebasestorage.googleapis.com/v0/b/mercadona-8089a.appspot.com/o/tiposMercadona%2Falimentacion.png?alt=media&token=57c707bc-b684-4242-ba02-86ab1504833a"
+    },
+    {
+        id:2,
+        name:"Frescos",
+        img:"https://firebasestorage.googleapis.com/v0/b/mercadona-8089a.appspot.com/o/tiposMercadona%2Ffrescos.png?alt=media&token=7a8c9c04-227e-44f5-af48-cc6b04d3ca46"
+    },
+    {
+        id:3,
+        name:"Congelados",
+        img:"https://firebasestorage.googleapis.com/v0/b/mercadona-8089a.appspot.com/o/tiposMercadona%2Fcongelados.png?alt=media&token=d54d580c-04cd-4893-a497-05b5b5f3e6e0"
+    },
+    {
+        id:4,
+        name:"Dulces",
+        img:"https://firebasestorage.googleapis.com/v0/b/mercadona-8089a.appspot.com/o/tiposMercadona%2Fdulces.png?alt=media&token=5a33439f-e057-42db-b761-11e39b5f0d7c"
+    },
+    {
+        id:5,
+        name:"Bebidas",
+        img:"https://firebasestorage.googleapis.com/v0/b/mercadona-8089a.appspot.com/o/tiposMercadona%2Fbebidas.png?alt=media&token=f417e4a7-ad85-4c53-aa6a-70ad6df4dcb4"
+    },
+    {
+        id:6,
+        name:"Hogar",
+        img:"https://firebasestorage.googleapis.com/v0/b/mercadona-8089a.appspot.com/o/tiposMercadona%2Fhogar.png?alt=media&token=1e3a5458-ad4e-4fbb-8917-47c23c7d4fc9"
+    },
+    {
+        id:7,
+        name:"Farmacia",
+        img:"https://firebasestorage.googleapis.com/v0/b/mercadona-8089a.appspot.com/o/tiposMercadona%2Ffarmacia.png?alt=media&token=6f0a8659-e6e9-4933-a62a-dab843dcb5d0"
+    },
+]
+
+module.exports=typesOfProducts
