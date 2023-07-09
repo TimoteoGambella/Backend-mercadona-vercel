@@ -33,23 +33,6 @@ const typesOfProducts=require("./models/typesOfProducts")
 
 const descryptId=require("./services/crypto")
 
-// app.get("/api/add", (req,res)=>{
-    // const user = new Productos({
-    //     title:"Mascarillas quirúrgicas",
-    //     photo:"https://firebasestorage.googleapis.com/v0/b/mercadona-8089a.appspot.com/o/productosMercadona%2Ffarmacia3.png?alt=media&token=6ac9c588-b9ed-436b-bda5-d8b58e2aa431",
-    //     price:1.00,
-    //     description:"Deliplus | 10ud",
-    //     type:"Farmacia"
-    // })
-    // user.save().then(doc=>{
-    //     console.log("CREADO")
-    //     res.json({response:"success",data:doc,message:"Prod creado"})
-    // })
-    // .catch(err=>{
-    //     res.status(400).json({response:"failed",data:doc,message:"Ocurrió un error"})
-    // })
-// })
-
 app.post("/api/getByType",(req,res)=>{
     Productos.find({type:req.body.type}
         .then(doc=>{
