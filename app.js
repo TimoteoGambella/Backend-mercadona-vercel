@@ -43,7 +43,7 @@ app.post("/api/getByType",(req,res)=>{
             }
         })
         .catch(err=>{
-            res.json({response:"failed",data:doc})
+            res.json({response:"failed",data:{}})
         })
     )
 })
@@ -52,7 +52,7 @@ app.post("/api/getAllUsers",(req,res)=>{
         res.json({response:"success",data:doc})
     })
     .catch(err=>{
-        res.json({response:"failed",data:doc,message:"Error Base de Datos"})
+        res.json({response:"failed",data:{},message:"Error Base de Datos"})
     })
 })
 app.post("/api/getAllTypes",(req,res)=>{
@@ -66,11 +66,11 @@ app.post("/api/getUser",(req,res)=>{
             if(doc.length!==0){
                 res.json({response:"success",data:doc,message:"Usuario encontrado"})
             }else{
-                res.json({response:"failed",data:doc,message:"Usuario no encontrado"}) 
+                res.json({response:"failed",data:{},message:"Usuario no encontrado"}) 
             }
         })
         .catch(err=>{
-            res.json({response:"failed",data:doc})
+            res.json({response:"failed",data:{}})
         })
     )
 })
@@ -81,11 +81,11 @@ app.post("/api/getUserByMail",(req,res)=>{
             if(doc.length!==0){
                 res.json({response:"success",data:doc,message:"Usuario encontrado"})
             }else{
-                res.json({response:"failed",data:doc,message:"Usuario no encontrado"}) 
+                res.json({response:"failed",data:{},message:"Usuario no encontrado"}) 
             }
         })
         .catch(err=>{
-            res.json({response:"failed",data:doc})
+            res.json({response:"failed",data:{}})
         })
     )
 })
@@ -99,14 +99,14 @@ app.post("/api/login", (req,res)=>{
             if(doc[0].password===req.body.password){
                 res.json({response:"success",data:doc,message:"Usuario encontrado"})
             }else{
-                res.json({response:"failed",data:[],message:"Contraseña incorrecta"}) 
+                res.json({response:"failed",data:{},message:"Contraseña incorrecta"}) 
             }
         }else{
-            res.json({response:"failed",data:[],message:"Usuario no encontrado"}) 
+            res.json({response:"failed",data:{},message:"Usuario no encontrado"}) 
         }
     })
     .catch(err=>{
-        res.json({response:"failed",data:doc})
+        res.json({response:"failed",data:{}})
     })
 })
 
@@ -129,12 +129,12 @@ app.post("/api/register", (req,res)=>{
                     res.json({response:"success",data:doc,message:"Usuario creado"})
                 })
                 .catch(err=>{
-                    res.status(400).json({response:"failed",data:doc,message:"Ocurrió un error"})
+                    res.status(400).json({response:"failed",data:{},message:"Ocurrió un error"})
                 })
             }
         })
         .catch(err=>{
-            res.json({response:"failed",data:doc,message:"Error Base de Datos"})
+            res.json({response:"failed",data:{},message:"Error Base de Datos"})
         })
     }else{
         res.json({response:"failed",data:{},message:"Parametros incorrectos"})
@@ -155,7 +155,7 @@ app.post("/api/favs", (req,res)=>{
                 res.json({response:"success",data:doc,message:"Favoritos actualizados"})
             })
             .catch(err=>{
-                res.json({response:"failed",data:doc,message:"Favoritos no actualizados"})
+                res.json({response:"failed",data:{},message:"Favoritos no actualizados"})
             })
     }
 })
@@ -173,7 +173,7 @@ app.post("/api/cart", (req,res)=>{
                 res.json({response:"success",data:doc,message:"Carrito actualizado"})
             })
             .catch(err=>{
-                res.json({response:"failed",data:doc,message:"Carrito no actualizado"})
+                res.json({response:"failed",data:{},message:"Carrito no actualizado"})
             })
     }
 })
@@ -190,7 +190,7 @@ app.post("/api/orderBy", (req,res)=>{
                 }
             })
             .catch(err=>{
-                res.json({response:"failed",data:doc})
+                res.json({response:"failed",data:{}})
             })
         ).sort(
             param==="nameAZ"?{name:1}:
