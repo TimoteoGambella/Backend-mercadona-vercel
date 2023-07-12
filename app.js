@@ -34,7 +34,7 @@ const typesOfProducts=require("./models/typesOfProducts")
 const descryptId=require("./services/crypto")
 
 app.post("/api/getByType",(req,res)=>{
-    Productos.find({type:req.body.type}
+    Productos.find({type:req.body.type})
         .then(doc=>{
             if(doc.length!==0){
                 res.json({response:"success",data:doc,message:"Productos encontrados"})
@@ -45,7 +45,6 @@ app.post("/api/getByType",(req,res)=>{
         .catch(err=>{
             res.json({response:"failed",data:{}})
         })
-    )
 })
 app.post("/api/getAllUsers",(req,res)=>{
     Usuarios.find({}).then(doc=>{
@@ -61,7 +60,7 @@ app.post("/api/getAllTypes",(req,res)=>{
 
 app.post("/api/getUser",(req,res)=>{
 
-    Usuarios.find({_id:userId}
+    Usuarios.find({_id:userId})
         .then(doc=>{
             if(doc.length!==0){
                 res.json({response:"success",data:doc,message:"Usuario encontrado"})
@@ -72,11 +71,10 @@ app.post("/api/getUser",(req,res)=>{
         .catch(err=>{
             res.json({response:"failed",data:{}})
         })
-    )
 })
 app.post("/api/getUserByMail",(req,res)=>{
 
-    Usuarios.find({mail:req.body.mail}
+    Usuarios.find({mail:req.body.mail})
         .then(doc=>{
             if(doc.length!==0){
                 res.json({response:"success",data:doc,message:"Usuario encontrado"})
@@ -87,7 +85,6 @@ app.post("/api/getUserByMail",(req,res)=>{
         .catch(err=>{
             res.json({response:"failed",data:{}})
         })
-    )
 })
 
 app.post("/api/login", (req,res)=>{
@@ -178,28 +175,36 @@ app.post("/api/cart", (req,res)=>{
     }
 })
 
-app.post("/api/orderBy", (req,res)=>{
-    let param=req.body.param
-    if(param==="nameAZ" || param==="nameZA" || param==="priceMax" || param==="priceMin"){
-        Productos.find({type:req.body.type}
-            .then(doc=>{
-                if(doc.length!==0){
-                    res.json({response:"success",data:doc,message:"Productos encontrados"})
-                }else{
-                    res.json({response:"failed",data:doc,message:"Productos no encontrados"}) 
-                }
-            })
-            .catch(err=>{
-                res.json({response:"failed",data:{}})
-            })
-        ).sort(
-            param==="nameAZ"?{name:1}:
-            param==="nameZA"?{name:-1}:
-            param==="priceMax"?{price:1}:
-            param==="priceMin"&&{price:-1}
+app.post("/api/orderBy", (req, res) => {
+    let param = req.body.param;
+    if (
+      param === "nameAZ" ||
+      param === "nameZA" ||
+      param === "priceMax" ||
+      param === "priceMin"
+    ) {
+      Productos.find({ type: req.body.type })
+        .sort(
+          param === "nameAZ"
+            ? { name: 1 }
+            : param === "nameZA"
+            ? { name: -1 }
+            : param === "priceMax"
+            ? { price: -1 }
+            : param === "priceMin" && { price: 1 }
         )
+        .then((doc) => {
+          if (doc.length !== 0) {
+            res.json({ response: "success", data: doc, message: "Productos encontrados" });
+          } else {
+            res.json({ response: "failed", data: doc, message: "Productos no encontrados" });
+          }
+        })
+        .catch((err) => {
+          res.json({ response: "failed", data: {} });
+        });
     }
-})
+});
 
 app.post("/api/getDays", async(req,res)=>{
     const days=await getweek(new Date())
