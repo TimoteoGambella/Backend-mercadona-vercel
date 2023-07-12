@@ -8,13 +8,4 @@ const Productos=mongoose.model("products",{
     description:String,
     type:String
 })
-const Usuarios=mongoose.model("users",{
-    mail:String,
-    username:String,
-    password:String,
-    favs:Array,
-    cart:Array
-})
-
 module.exports=Productos
-module.exports=Usuarios

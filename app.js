@@ -18,8 +18,8 @@ app.use(cors())
 
 mongoose.connect(uri,{useNewUrlParser: true, useUnifiedTopology: true})
 const connection= mongoose.connection
-const Productos=require("./models/models")
-const Usuarios=require("./models/models")
+const Productos=require("./models/modelProductos")
+const Usuarios=require("./models/modelUsuarios")
 
 connection.once("open", ()=>{
     console.log("Conexion a la BD exitosa...")
