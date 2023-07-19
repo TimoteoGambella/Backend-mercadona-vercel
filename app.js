@@ -59,7 +59,7 @@ app.post("/api/getAllTypes",(req,res)=>{
 })
 
 app.post("/api/getUser",(req,res)=>{
-    let userId = CryptoJS.AES.decrypt(req.body.id, "clave_secreta").toString(CryptoJS.enc.Utf8)
+    let userId = descryptId(req.body.id)
 
     Usuarios.find({_id:userId})
         .then(doc=>{
@@ -70,7 +70,7 @@ app.post("/api/getUser",(req,res)=>{
             }
         })
         .catch(err=>{
-            res.json({response:"failed",data:{}})
+            res.json({response:"failed",data:{},message:"Usuario no encontrado"})
         })
 })
 app.post("/api/getUserByMail",(req,res)=>{
@@ -84,7 +84,7 @@ app.post("/api/getUserByMail",(req,res)=>{
             }
         })
         .catch(err=>{
-            res.json({response:"failed",data:{}})
+            res.json({response:"failed",data:{},message:"Usuario no encontrado"})
         })
 })
 
