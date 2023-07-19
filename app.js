@@ -43,7 +43,7 @@ app.post("/api/getByType",(req,res)=>{
             }
         })
         .catch(err=>{
-            res.json({response:"failed",data:{}})
+            res.json({response:"failed",data:{},message:"Error de conexión"})
         })
 })
 app.post("/api/getAllUsers",(req,res)=>{
@@ -104,7 +104,7 @@ app.post("/api/login", (req,res)=>{
         }
     })
     .catch(err=>{
-        res.json({response:"failed",data:{}})
+        res.json({response:"failed",data:{},message:"Error de conexión"})
     })
 })
 
@@ -202,7 +202,7 @@ app.post("/api/orderBy", (req, res) => {
           }
         })
         .catch((err) => {
-          res.json({ response: "failed", data: {} });
+            res.json({response:"failed",data:{},message:"Error de conexión"})
         });
     }
 });
