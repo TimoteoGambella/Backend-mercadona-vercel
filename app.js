@@ -32,6 +32,7 @@ connection.on("error", (error,res)=>{
 const typesOfProducts=require("./models/typesOfProducts")
 
 const descryptId=require("./services/crypto")
+const getweek=require("./services/days")
 
 app.post("/api/getByType",(req,res)=>{
     Productos.find({type:req.body.type})
